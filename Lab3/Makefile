@@ -8,3 +8,6 @@ Driver.o: Driver.cpp
 lab3: StreamOperations.o Driver.o
 	g++ StreamOperations.o Driver.o -o lab3.exe
 
+clean:
+	rm -rf *.o
+	rm -rf *.exe
