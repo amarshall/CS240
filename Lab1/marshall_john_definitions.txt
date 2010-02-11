@@ -1,0 +1,10 @@
+pwd: Prints the current working directory that the shell is in (".")
+mkdir: Creates a new directory at the specified path
+rmdir: Removes the specified directory and all its contents
+cd: Changes the current working directory to the specified one (shortcuts such as ".." used for parent directory)
+ls: Shows a list of files and directories in the current working directory (or specified directory).
+find: A command-line search utility for finding a file in a directory given a pattern (and directory)
+mv: Moves a specified file (or recursively moves a directory) to another location.
+g++: The GNU C++ compiler, a wonderful and free C++ compiler.
+gdb: The GNU DeBugger, used for debugging programs compiled with the "-g" option to include debugging flags.
+make: Executes the makefile in the current directory or a specified one.
