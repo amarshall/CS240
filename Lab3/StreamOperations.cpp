@@ -61,8 +61,11 @@ void StreamOperations::process() {
 				str = str.substr(str.find(" ")+1, string::npos);
 				wordCount++;
 			}
-			
-			outputStream << lineCount << " " << cur << endl;
+			if(outputStream.is_open()) {
+				outputStream << lineCount << " " << cur << endl;
+			} else {
+				cerr << "Error writing to output file." << endl;
+			}
 			lineCount++;
 		}
 	} else {
