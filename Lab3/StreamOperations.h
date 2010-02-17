@@ -8,16 +8,15 @@
 #include <string>
 #include <fstream>
 
-using namespace std;
-
 class StreamOperations {
 	private:
-		ifstream inputStream;
-		ofstream outputStream;
+		std::ifstream inputStream;
+		std::ofstream outputStream;
 	
 	public:
 		StreamOperations();
-		StreamOperations(const string inputFile, const string outputFile);
+		StreamOperations(const std::string inputFile, const std::string outputFile);
 		~StreamOperations();
+		void process();
 };
 

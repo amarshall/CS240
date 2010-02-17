@@ -6,6 +6,8 @@
 
 #include "StreamOperations.h"
 
+using namespace std;
+
 StreamOperations::StreamOperations() { }
 
 StreamOperations::StreamOperations(const string inputFile, const string outputFile) {
