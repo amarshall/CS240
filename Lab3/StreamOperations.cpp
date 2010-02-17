@@ -23,7 +23,7 @@ StreamOperations::~StreamOperations() {
 void StreamOperations::process() {
 	if(inputStream.is_open()) {
 		int lineCount = 0;
-		int wordCount = 1;
+		int wordCount = 0;
 		while(!inputStream.eof()) {
 			string cur;
 			getline(inputStream, cur);
@@ -56,6 +56,7 @@ void StreamOperations::process() {
 			
 			// Count number of "words"
 			string str = cur;
+			if(cur.length() > 0) wordCount++;  // Don't count blank lines
 			while(str.find(' ') != string::npos) {
 				str = str.substr(str.find(" ")+1, string::npos);
 				wordCount++;
