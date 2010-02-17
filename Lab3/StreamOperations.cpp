@@ -23,6 +23,7 @@ StreamOperations::~StreamOperations() {
 void StreamOperations::process() {
 	if(inputStream.is_open()) {
 		int lineCount = 0;
+		int wordCount = 1;
 		while(!inputStream.eof()) {
 			string cur;
 			getline(inputStream, cur);
@@ -51,6 +52,13 @@ void StreamOperations::process() {
 			}
 			while(cur.find("iostream") != string::npos) {
 				cur.replace(cur.find("iostream"), 8, "C++_KEYWORD");
+			}
+			
+			// Count number of "words"
+			string str = cur;
+			while(str.find(' ') != string::npos) {
+				str = str.substr(str.find(" ")+1, string::npos);
+				wordCount++;
 			}
 			
 			outputStream << lineCount << " " << cur << endl;
