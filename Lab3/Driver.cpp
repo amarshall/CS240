@@ -6,8 +6,14 @@
 
 #include "StreamOperations.h"
 
-int main() {
-	StreamOperations myStreamOps("StreamOperations.cpp", "StreamOperationsOut.txt");
+using namespace std;
+
+int main(int argc, char *argv[]) {
+	if(argv[1] == NULL) {
+		cerr << "Invalid input file." << endl;
+		exit(1);
+	}
+	StreamOperations myStreamOps(string(argv[1]), "StreamOperationsOut.txt");
 	myStreamOps.process();
 	
 	return 0;
