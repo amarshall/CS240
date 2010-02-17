@@ -6,6 +6,7 @@
 
 #include <stdlib.h>
 #include <string>
+#include <iostream>
 #include <fstream>
 
 class StreamOperations {
@@ -19,4 +20,3 @@ class StreamOperations {
 		~StreamOperations();
 		void process();
 };
-
