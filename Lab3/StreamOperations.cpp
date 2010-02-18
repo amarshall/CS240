@@ -85,6 +85,13 @@ void StreamOperations::process() {
 			
 			lineCount++;
 		}
+		
+		if(outputStream.is_open()) {
+			outputStream << "*** WORD COUNT IS " << wordCount << " ***" << endl;
+		} else {
+			cerr << "Error writing to output file." << endl;
+		}
+		
 	} else {
 		cerr << "Error opening input file." << endl;
 	}
