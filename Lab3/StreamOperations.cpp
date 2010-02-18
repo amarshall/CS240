@@ -8,18 +8,34 @@
 
 using namespace std;
 
+/**
+ * Default constructor, does nothing.
+ */
 StreamOperations::StreamOperations() { }
 
+/**
+ * Opens file streams for the given input and output files.
+ *
+ * @param inputFile Filename of the input file
+ * @param outputFile Filename of the output file
+ */
 StreamOperations::StreamOperations(const string inputFile, const string outputFile) {
 	inputStream.open(inputFile.data());
 	outputStream.open(outputFile.data());
 }
 
+/**
+ * Closes all file streams.
+ */
 StreamOperations::~StreamOperations() {
 	inputStream.close();
 	outputStream.close();
 }
 
+/**
+ * Processes the input file according to the lab specifications and outputs the
+ * resulting text to the output file.
+ */
 void StreamOperations::process() {
 	if(inputStream.is_open()) {
 		int lineCount = 0;
@@ -66,6 +82,7 @@ void StreamOperations::process() {
 			} else {
 				cerr << "Error writing to output file." << endl;
 			}
+			
 			lineCount++;
 		}
 	} else {
