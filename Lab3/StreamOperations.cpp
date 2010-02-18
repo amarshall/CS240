@@ -11,7 +11,10 @@ using namespace std;
 /**
  * Default constructor, does nothing.
  */
-StreamOperations::StreamOperations() { }
+StreamOperations::StreamOperations() {
+	inputStream.open(NULL);
+	outputStream.open(NULL);
+}
 
 /**
  * Opens file streams for the given input and output files.
