@@ -9,8 +9,8 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
-	if(argv[1] == NULL) {
-		cerr << "Invalid input file." << endl;
+	if(argc <= 1) {
+		cerr << "No input file specified." << endl;
 		exit(1);
 	}
 	StreamOperations myStreamOps(string(argv[1]), "StreamOperationsOut.txt");
