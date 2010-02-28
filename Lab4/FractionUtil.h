@@ -11,7 +11,8 @@
 
 class FractionUtil {
 	public:
-
+		void readTwoFractions(Fraction &firstFraction, Fraction &secondFraction);
+		bool runSimpleMathGame();
 };
 
 #endif // FRACTION_UTIL_H__
