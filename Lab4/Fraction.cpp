@@ -57,8 +57,10 @@ const Fraction& Fraction::operator=(const Fraction &f) {
 std::istream& operator>>(std::istream& in, Fraction & f) {
 	cout << "Numerator: ";
 	in >> f.num;
-	cout << "Denominator: ";
-	in >> f.denom;
+	do {
+		cout << "Denominator (non-zero): ";
+		in >> f.denom;
+	} while(f.denom == 0);
 	return in;
 }
 
