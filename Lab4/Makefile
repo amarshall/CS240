@@ -8,15 +8,15 @@ all: fraction.exe
 
 # Link object files into binary
 fraction.exe: Fraction.o FractionUtil.o FractionUser.o
-	g++ Fraction.o FractionUtil.o FractionUser.o -o fraction.exe
+	g++ -Wall Fraction.o FractionUtil.o FractionUser.o -o fraction.exe
 
 # Compile source code into object files
 Fraction.o: Fraction.cpp
-	g++ -c Fraction.cpp
+	g++ -Wall -c Fraction.cpp
 FractionUtil.o: FractionUtil.cpp
-	g++ -c FractionUtil.cpp
+	g++ -Wall -c FractionUtil.cpp
 FractionUser.o: FractionUser.cpp
-	g++ -c FractionUser.cpp
+	g++ -Wall -c FractionUser.cpp
 
 # Delete object and binary files
 clean:

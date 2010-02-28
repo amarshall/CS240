@@ -11,7 +11,9 @@
 
 class FractionUtil {
 	public:
+		/* Reads in two fractions and puts them in the given memory locations */
 		void readTwoFractions(Fraction &firstFraction, Fraction &secondFraction);
+		/* Runs the simple math game */
 		bool runSimpleMathGame();
 };
 

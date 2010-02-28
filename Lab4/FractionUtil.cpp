@@ -12,7 +12,12 @@
 
 using namespace std;
 
-// reads two fractions using the overloading cin operator
+/**
+ * Reads two fractions using Fraction's overloading cin operator
+ *
+ * @params firstFraction Reference to the first fraction to read in.
+ * @params secondFraction Reference to the second fraction to read in.
+ */
 void FractionUtil::readTwoFractions(Fraction &firstFraction, Fraction &secondFraction) {
 	cout << endl;
 	cout << "Please enter the numerator and denominator for the first fraction:" << endl;
@@ -21,7 +26,10 @@ void FractionUtil::readTwoFractions(Fraction &firstFraction, Fraction &secondFra
 	cin >> secondFraction;
 }
 
-
+/**
+ * Runs a simple math game, giving the user lots of options for things that can
+ * be done with fractions.
+ */
 bool FractionUtil::runSimpleMathGame() {
 	cout << "--------------------------------" << endl;
 	cout << "Welcome to the Simple Math-Game" << endl;
