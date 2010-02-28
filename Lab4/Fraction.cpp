@@ -25,6 +25,7 @@ Fraction::~Fraction() {
 }
 
 bool operator==(const Fraction & f1, const Fraction & f2) {
+	return (f1.num == f2.num) && (f1.denom == f2.denom);
 }
 
 Fraction Fraction::operator+(const Fraction &f1) const {

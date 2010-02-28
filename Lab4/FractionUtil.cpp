@@ -57,10 +57,11 @@ bool FractionUtil::runSimpleMathGame() {
 		cout << answerFraction << endl;
 	} else if((userOption == "equals") || (userOption == "equals")) {
 		readTwoFractions(firstFraction, secondFraction);
-		answerFraction = firstFraction = secondFraction;
-		cout << answerFraction << endl;
-	} else if((userOption == "quit") || (userOption == "quit")) {
-		exit(0);
+		if(firstFraction == secondFraction) {
+			cout << "The two fractions are equal." << endl;
+		} else {
+			cout << "The two fractions are not equal." << endl;
+		}
 	} else {
 		cout << "The option for " <<  userOption << " is not valid. " << endl;
 	}
