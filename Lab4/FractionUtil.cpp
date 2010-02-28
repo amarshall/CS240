@@ -8,6 +8,7 @@
 #include "Fraction.h"
 #include <iostream>
 #include <string>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -45,8 +46,21 @@ bool FractionUtil::runSimpleMathGame() {
 	} else if((userOption == "add") || (userOption == "ADD")) {
 		readTwoFractions(firstFraction, secondFraction);
 		answerFraction = firstFraction + secondFraction;
-		cout << answerFraction;
-		// TODO: Add code for remainder of user options
+		cout << answerFraction << endl;
+	} else if((userOption == "subtract") || (userOption == "subtract")) {
+		readTwoFractions(firstFraction, secondFraction);
+		answerFraction = firstFraction - secondFraction;
+		cout << answerFraction << endl;
+	} else if((userOption == "multiply") || (userOption == "multiply")) {
+		readTwoFractions(firstFraction, secondFraction);
+		answerFraction = firstFraction * secondFraction;
+		cout << answerFraction << endl;
+	} else if((userOption == "equals") || (userOption == "equals")) {
+		readTwoFractions(firstFraction, secondFraction);
+		answerFraction = firstFraction = secondFraction;
+		cout << answerFraction << endl;
+	} else if((userOption == "quit") || (userOption == "quit")) {
+		exit(0);
 	} else {
 		cout << "The option for " <<  userOption << " is not valid. " << endl;
 	}
