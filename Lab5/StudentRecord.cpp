@@ -6,6 +6,8 @@
 
 #include "StudentRecord.h"
 
+using namespace std;
+
 StudentRecord::StudentRecord() {
 	studentID = 0;
 	studentGPA = 0;

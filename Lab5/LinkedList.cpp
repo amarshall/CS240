@@ -6,6 +6,8 @@
 
 #include "LinkedList.h"
 
+using namespace std;
+
 LinkedList::LinkedList() {
 	first = NULL;
 }

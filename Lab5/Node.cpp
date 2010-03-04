@@ -6,6 +6,8 @@
 
 #include "Node.h"
 
+using namespace std;
+
 Node::Node() {
 	data = NULL;
 	next = NULL;
