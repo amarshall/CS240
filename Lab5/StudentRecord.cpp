@@ -15,15 +15,18 @@ StudentRecord::StudentRecord() {
 	courseList = 0;
 }
 
-
 StudentRecord::StudentRecord(int idIn, double gpaIn, int *courseListIn, int numOfCoursesIn) {
 	studentID = idIn;
 	studentGPA = gpaIn;
 	numOfCourses = numOfCoursesIn;
-	// FIXME: if numOfCourses <= 0, set courseList = 0
-	// FIXME: else write code to copy from courseListIn into courseList
-	// FIXME: note that you need to allocate for courseList;
-	//courseList = new int[numOfCourses];
+	if(numOfCourses == 0) {
+		courseList = 0;
+	} else {
+		courseList = new int[numOfCourses];
+		for(int i=0; i<numOfCourses; i++) {
+			courseList[i] = courseListIn[i];
+		}
+	}
 }
 
 int StudentRecord::getID() {
@@ -45,4 +48,3 @@ int* StudentRecord::getCourseList() {
 StudentRecord::~StudentRecord() {
 	// FIXME: write code to delete the data member that was dynamically allocated
 }
-

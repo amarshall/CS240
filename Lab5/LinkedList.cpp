@@ -29,7 +29,9 @@ void LinkedList::removeFirstNode() {
 }
 
 void LinkedList::displayList() {
-	
+	for(Node * tmp=first; tmp != NULL; tmp=tmp->next) {
+		displayStudentRecord(tmp->data);
+	}
 }
 
 LinkedList::~LinkedList() {
@@ -43,8 +45,11 @@ LinkedList::~LinkedList() {
 	}
 }
 
-
 void LinkedList::displayStudentRecord(StudentRecord* studentRecord) {
-
+	cout << "ID:" << studentRecord->getID() << " GPA:" << studentRecord->getGPA() << endl;
+	cout << studentRecord->getNumOfCourses() << " courses:" << endl;
+	for(int i=0; i < studentRecord->getNumOfCourses(); i++) {
+		cout << (studentRecord->getCourseList())[i] << endl;
+	}
+	cout << endl;
 }
-
