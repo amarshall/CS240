@@ -46,5 +46,5 @@ int* StudentRecord::getCourseList() {
 }
 
 StudentRecord::~StudentRecord() {
-	// FIXME: write code to delete the data member that was dynamically allocated
+	delete courseList;
 }
