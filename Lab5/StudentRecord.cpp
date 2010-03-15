@@ -8,6 +8,7 @@
 
 using namespace std;
 
+/* Empty constructor, initializes private data to zero */
 StudentRecord::StudentRecord() {
 	studentID = 0;
 	studentGPA = 0;
@@ -15,6 +16,14 @@ StudentRecord::StudentRecord() {
 	courseList = 0;
 }
 
+/**
+ * Explicit value constructor
+ *
+ * @param idIn The student's ID
+ * @param gpaIn The student's GPA
+ * @param courseListIn Pointer to an int array of the student's course list
+ * @param numOfCoursesIn The number of courses in the passed array
+ */
 StudentRecord::StudentRecord(int idIn, double gpaIn, int *courseListIn, int numOfCoursesIn) {
 	studentID = idIn;
 	studentGPA = gpaIn;
@@ -29,22 +38,27 @@ StudentRecord::StudentRecord(int idIn, double gpaIn, int *courseListIn, int numO
 	}
 }
 
+/* @returns The student's ID */
 int StudentRecord::getID() {
 	return studentID;
 }
 
+/* @returns The student's GPA */
 double StudentRecord::getGPA() {
 	return studentGPA;
 }
 
+/* @returns The number of courses the student is enrolled in */
 int StudentRecord::getNumOfCourses() {
 	return numOfCourses;
 }
 
+/* @returns An int array of the student's courses */
 int* StudentRecord::getCourseList() {
 	return courseList;
 }
 
+/* Destructor */
 StudentRecord::~StudentRecord() {
 	delete courseList;
 }

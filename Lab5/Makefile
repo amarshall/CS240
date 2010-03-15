@@ -4,10 +4,10 @@
 # @author J. Andrew Marshall (jmarsha6)
 
 
-#specify the compiler
+# Specify the compiler
 GXX=g++ -g -Wall
 
-# Specifiy the target
+# Specify the target
 all: linkedList.exe
 
 # Link objects into binary
@@ -29,5 +29,5 @@ Node.o: Node.cpp
 
 # Delete object, binary, and temporary files
 clean:
-	rm -f *.o *~ core *.exe
+	rm -rf *.o *~ core *.exe
 	
