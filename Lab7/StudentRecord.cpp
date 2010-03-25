@@ -61,7 +61,7 @@ int* StudentRecord::getCourseList() {
 	return courseList;
 }
 
-/* Destructor */
+/* Displays student data */
 void StudentRecord::displayRecord() {
 	cout << "--------STUDENT-RECORD-" << endl;
 	cout << "ID: " << studentID << endl;
@@ -73,6 +73,7 @@ void StudentRecord::displayRecord() {
 	cout << "---------END-----------" << endl << endl;
 }
 
+/* Destructor */
 StudentRecord::~StudentRecord() {
 	delete courseList;
 }
