@@ -9,12 +9,17 @@
 
 using namespace std;
 
+/* Empty constructor, initializes private data to NULL */
 template <class T>
 LinkedList<T>::LinkedList() {
 	first = NULL;
 }
 
-
+/**
+* Inserts a new Node at the end of the list
+*
+* @param The StudentRecord to put in the new Node
+*/
 template <class T>
 void LinkedList<T>::insertLastNode(T *recordIn) {
 	Node<T> * newNode = new Node<T>(recordIn, NULL);
@@ -29,6 +34,7 @@ void LinkedList<T>::insertLastNode(T *recordIn) {
 
 }
 
+/* Removes the Node at the beggining of the list */
 template <class T>
 void LinkedList<T>::removeFirstNode() {
 	Node<T> * tmp = first->next;
@@ -36,7 +42,7 @@ void LinkedList<T>::removeFirstNode() {
 	first = tmp;
 }
 
-
+/* Prints to stdout the contents of the list */
 template <class T>
 void LinkedList<T>::displayList() {
 	if (first == NULL) {
@@ -51,6 +57,7 @@ void LinkedList<T>::displayList() {
 	}
 }
 
+/* Destructor, deletes all Nodes in the list */
 template <class T>
 LinkedList<T>::~LinkedList() {
 	if(first != NULL) {
