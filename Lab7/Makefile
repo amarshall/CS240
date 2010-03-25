@@ -16,7 +16,7 @@ linkedList.exe: StudentRecord.o EmployeeRecord.o ListMain.o
 	$(GXX) StudentRecord.o EmployeeRecord.o ListMain.o -o linkedList.exe
 
 # Compile source code into object files
-ListMain.o: ListMain.cpp
+ListMain.o: ListMain.cpp LinkedList.cc LinkedList.h Node.cc Node.h
 	$(GXX) -c ListMain.cpp
 
 StudentRecord.o: StudentRecord.cpp
