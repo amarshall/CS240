@@ -11,25 +11,31 @@
 using namespace std;
 
 EmployeeRecord::EmployeeRecord() {
-    // FIXME
+	employeeID = 0;
+	expYears = 0;
+	unitName = "";
 }
 
 
 EmployeeRecord::EmployeeRecord(int idIn, int expYearsIn, string unitNameIn) {
-    // FIXME
+	employeeID = idIn;
+	expYears = expYearsIn;
+	unitName = unitNameIn;
 }
 
 int EmployeeRecord::getID() {
-    // FIXME
+	return employeeID;
 }
 
 int EmployeeRecord::getExpYears() {
-    // FIXME
+	return expYears;
 }
 
 void EmployeeRecord::displayRecord() {
 	cout << "--------Employee-RECORD-" << endl;
-	// FIXME
+	cout << "ID: " << employeeID << endl;
+	cout << "Exp. Years: " << expYears << endl;
+	cout << "Unit: " << unitName << endl;
 	cout << "---------END-----------" << endl << endl;
 }
 

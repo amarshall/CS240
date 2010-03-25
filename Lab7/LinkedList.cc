@@ -17,15 +17,23 @@ LinkedList<T>::LinkedList() {
 
 template <class T>
 void LinkedList<T>::insertLastNode(T *recordIn) {
-	// initially set the next of this node to NULL
-	Node<T> *newNode = new Node<T>(recordIn, NULL);
+	Node<T> * newNode = new Node<T>(recordIn, NULL);
+	
+	if(first != NULL) {
+		Node<T> * tmp;
+		for(tmp=first; tmp->next != NULL; tmp=tmp->next);
+		tmp->next = newNode;
+	} else {
+		first = newNode;
+	}
 
-	// FIXME: Add rest of the code to insert the node
 }
 
 template <class T>
 void LinkedList<T>::removeFirstNode() {
-	// FIXME: Add rest of the code to remove the first node
+	Node<T> * tmp = first->next;
+	delete first;
+	first = tmp;
 }
 
 
@@ -45,11 +53,13 @@ void LinkedList<T>::displayList() {
 
 template <class T>
 LinkedList<T>::~LinkedList() {
-	// first check if the first ptr is null    
-	if (first == NULL) {
-		return;
+	if(first != NULL) {
+		Node<T> * tmp = first;
+		while(tmp != NULL) {
+			Node<T> * next = tmp->next;
+			delete tmp;
+			tmp = next;
+		}
 	}
-
-	// FIXME: iterate through the linked list and delete each Node
 }
 

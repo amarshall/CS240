@@ -11,36 +11,55 @@
 using namespace std;
 
 StudentRecord::StudentRecord() {
-	// FIXME: default values 
+	studentID = 0;
+	studentGPA = 0;
+	numOfCourses = 0;
+	courseList = 0;
 }
 
 StudentRecord::StudentRecord(int idIn, double gpaIn, int *courseListIn, int numOfCoursesIn) {
-	// FIXME: set the appropriate values
+	studentID = idIn;
+	studentGPA = gpaIn;
+	numOfCourses = numOfCoursesIn;
+	if(numOfCourses == 0) {
+		courseList = 0;
+	} else {
+		courseList = new int[numOfCourses];
+		for(int i=0; i<numOfCourses; i++) {
+			courseList[i] = courseListIn[i];
+		}
+	}
+
 }
 
 int StudentRecord::getID() {
-	// FIXME
+	return studentID;
 }
 
 double StudentRecord::getGPA() {
-	// FIXME
+	return studentGPA;
 }
 
 int StudentRecord::getNumOfCourses() {
-	// FIXME
+	return numOfCourses;
 }
 
 int* StudentRecord::getCourseList() {
-	// FIXME
+	return courseList;
 }
 
 void StudentRecord::displayRecord() {
 	cout << "--------STUDENT-RECORD-" << endl;
-	// FIXME: print each data member
+	cout << "ID: " << studentID << endl;
+	cout << "GPA: " << studentGPA << endl;
+	cout << "Courses:" << endl;
+	for(int i=0; i < numOfCourses; i++) {
+		cout << courseList[i] << endl;
+	}
 	cout << "---------END-----------" << endl << endl;
 }
 
 StudentRecord::~StudentRecord() {
-	// FIXME
+	delete courseList;
 }
 
