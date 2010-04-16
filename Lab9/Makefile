@@ -9,12 +9,11 @@
 GXX=g++ -g -Wall
 
 # Specify the target
-all: search.exe search2.exe
+all: search.exe
 
 # Link objects into binary
 search.exe: BinarySearchTree.o TreeNode.o SearchClass.o Driver.o
-	$(GXX) BinarySearchTree.o TreeNode.o -o search.exe
-
+	$(GXX) Driver.o BinarySearchTree.o TreeNode.o -o search.exe
 
 # Compile source code into object files
 BinarySearchTree.o: BinarySearchTree.cpp BinarySearchTree.h
@@ -23,11 +22,11 @@ BinarySearchTree.o: BinarySearchTree.cpp BinarySearchTree.h
 TreeNode.o: TreeNode.cpp TreeNode.h
 	$(GXX) -c TreeNode.cpp
 
-Driver.o: Driver.o
+Driver.o: Driver.cpp
 	$(GXX) -c Driver.cpp
 
 SearchClass.o: SearchClass.cpp SearchClass.h
-	g++  -c  SearchClass.cpp
+	$(GXX) -c SearchClass.cpp
 
 # Delete object, binary, and temporary files
 clean:
