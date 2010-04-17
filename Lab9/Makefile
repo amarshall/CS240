@@ -13,7 +13,7 @@ all: search.exe
 
 # Link objects into binary
 search.exe: BinarySearchTree.o TreeNode.o SearchClass.o Driver.o
-	$(GXX) Driver.o BinarySearchTree.o TreeNode.o -o search.exe
+	$(GXX) Driver.o BinarySearchTree.o TreeNode.o SearchClass.o -o search.exe
 
 # Compile source code into object files
 BinarySearchTree.o: BinarySearchTree.cpp BinarySearchTree.h
