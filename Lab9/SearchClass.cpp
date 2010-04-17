@@ -116,5 +116,6 @@ int SearchClass::binaryRecursion(int first, int last, int searchItem){
 		} else {
 			return binaryRecursion(first, mid-1, searchItem);	
 		}
+	}
 }
 
