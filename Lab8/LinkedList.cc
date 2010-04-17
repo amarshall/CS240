@@ -19,7 +19,7 @@ LinkedList<T>::LinkedList() {
 /**
 * Inserts a new Node at the end of the list
 *
-* @param The StudentRecord to put in the new Node
+* @param The data to put in the new Node
 */
 template <class T>
 void LinkedList<T>::insertLastNode(T *recordIn) {
@@ -36,9 +36,14 @@ void LinkedList<T>::insertLastNode(T *recordIn) {
 template <class T>
 void LinkedList<T>::removeFirstNode() {
 	if(first != NULL) {
-		Node<T> * tmp = first->next;
-		delete first;
-		first = tmp;
+		Node<T> * tmp = first;
+		first = first->next;
+		delete tmp;
+		if(first != NULL && first->next == NULL) {
+			last = first;
+		} else if(first == NULL) {
+			last = NULL;
+		}
 	}
 }
 
@@ -46,11 +51,13 @@ void LinkedList<T>::removeFirstNode() {
 template <class T>
 void LinkedList<T>::removeSecondNode() {
 	if(first != NULL && first->next != NULL) {
-		Node<T> * tmp = first->next->next;
-		delete first->next;
+		Node<T> * tmp = first->next->next;  // Third node
+		delete first->next;  // Delete second node
 		first->next = tmp;
-		if(tmp != NULL) {
-			tmp->prev = first;
+		if(first->next != NULL) {
+			first->next->prev = first;
+		} else {
+			last = first;
 		}
 	}
 }
@@ -64,7 +71,7 @@ void LinkedList<T>::displayList() {
 	} else {	
 		Node<T>* ptr = first;
 		while (ptr != NULL) {
-			(ptr->data)->displayRecord();
+			ptr->data->displayRecord();
 			ptr = ptr->next;
 		}
 	}
@@ -83,4 +90,3 @@ LinkedList<T>::~LinkedList() {
 		}
 	}
 }
-

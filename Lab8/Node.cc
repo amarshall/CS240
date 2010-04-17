@@ -12,6 +12,7 @@ template <class T>
 Node<T>::Node() {
 	data = NULL;
 	next = NULL;
+	prev = NULL;
 }
 
 /**
@@ -71,4 +72,3 @@ Node<T>::~Node() {
 	delete data;
 	// Next node is deleted by LinkedList.cpp
 }
-

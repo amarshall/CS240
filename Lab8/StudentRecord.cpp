@@ -75,6 +75,6 @@ void StudentRecord::displayRecord() {
 
 /* Destructor */
 StudentRecord::~StudentRecord() {
-	delete courseList;
+	delete[] courseList;
 }
 
