@@ -99,18 +99,22 @@ int SearchClass::recBinarySearch(int searchItem){
 
 /**
  * A private method which calls itself recursively to perform a binary search.
- * @param first- index of the first element of the array.
- * @param last- index of the last element of the array
- * @searchItem -item to search from 
+ * @param first index of the first element of the array.
+ * @param last index of the last element of the array
+ * @param searchItem item to search from 
  * @return the index of the searchItem, if not found return -1.
  */
 int SearchClass::binaryRecursion(int first, int last, int searchItem){
 	int mid = (first+last)/2;
-	if(intArray[mid]==searchItem) return mid;
-	else{
-		if(first == last) return -1;
-		else if(intArray[mid] < searchItem) binaryRecursion(mid+1,last,searchItem);
-		else binaryRecursion(first, mid-1, searchItem);	
+	if(intArray[mid] == searchItem) {
+		return mid;
+	} else {
+		if(first == last) {
+			return -1;
+		} else if(intArray[mid] < searchItem) {
+			return binaryRecursion(mid+1, last, searchItem);
+		} else {
+			return binaryRecursion(first, mid-1, searchItem);	
 		}
 }
 
