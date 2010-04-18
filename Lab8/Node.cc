@@ -23,7 +23,7 @@ Node<T>::Node() {
 * @param *prevIn Pointer to the Node before the new Node
 */
 template <class T>
-Node<T>::Node(T *dataIn, Node* nextIn, Node* prevIn) {
+Node<T>::Node(T* dataIn, Node* nextIn, Node* prevIn) {
 	data = dataIn;
 	next = nextIn;
 	prev = prevIn;

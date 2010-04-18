@@ -28,4 +28,3 @@ EmployeeRecord.o: EmployeeRecord.cpp
 # Delete object, binary, and temporary files
 clean:
 	rm -rf *.o *~ core *.exe
-

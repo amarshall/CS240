@@ -11,20 +11,19 @@
 #include <string>
 
 class EmployeeRecord {
- private:
-    int employeeID;
-    int expYears;
-    std::string unitName;
-    
- public:
-    EmployeeRecord();
-    EmployeeRecord(int idIn, int expYearsIn, std::string unitNameIn);
-    int getID();
-    int getExpYears();
-    std::string getUnitName();
-    void displayRecord();
+	private:
+		int employeeID;
+		int expYears;
+		std::string unitName;
+	
+	public:
+		EmployeeRecord();
+		EmployeeRecord(int idIn, int expYearsIn, std::string unitNameIn);
+		int getID();
+		int getExpYears();
+		std::string getUnitName();
+		void displayRecord();
 
 };
 
 #endif // EMPLOYEE_RECORD_H__
-

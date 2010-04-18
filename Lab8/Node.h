@@ -23,10 +23,10 @@ class Node {
 		
 	public:
 		Node();
-		Node(T *dataIn, Node* nextIn, Node* prevIn);
-		Node *getNext();
+		Node(T* dataIn, Node* nextIn, Node* prevIn);
+		Node* getNext();
 		void setNext(Node* nextIn);
-		Node *getPrev();
+		Node* getPrev();
 		void setPrev(Node* prevIn);
 		T* getData();
 		void setData(T* dataIn);

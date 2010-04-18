@@ -14,7 +14,6 @@
 
 template <class T>
 class LinkedList {
-  
 	public:
 		LinkedList();
 		void insertLastNode(T* srIn);
@@ -31,4 +30,3 @@ class LinkedList {
 
 #include "LinkedList.cc"
 #endif // LINKED_LIST_H__
-

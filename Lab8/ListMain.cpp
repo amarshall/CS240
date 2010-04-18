@@ -11,7 +11,7 @@
 #include "EmployeeRecord.h"
 
 void driverStudentRecord() {
-	int *courseList = new int[3];
+	int* courseList = new int[3];
 	courseList[0] = 140;
 	courseList[1] = 220;
 	courseList[2] = 240;

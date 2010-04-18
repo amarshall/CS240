@@ -18,10 +18,10 @@ class StudentRecord {
 	public:
 		StudentRecord();
 		~StudentRecord();
-		StudentRecord(int idIn, double gpaIn, int *courseListIn, int numOfCoursesIn);
+		StudentRecord(int idIn, double gpaIn, int* courseListIn, int numOfCoursesIn);
 		int getID();
 		double getGPA();
-		int *getCourseList();
+		int* getCourseList();
 		int getNumOfCourses();
 		void displayRecord();
 };

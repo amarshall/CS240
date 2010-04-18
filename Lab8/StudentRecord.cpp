@@ -77,4 +77,3 @@ void StudentRecord::displayRecord() {
 StudentRecord::~StudentRecord() {
 	delete[] courseList;
 }
-

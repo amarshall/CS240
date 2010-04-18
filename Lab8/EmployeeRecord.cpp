@@ -42,10 +42,9 @@ int EmployeeRecord::getExpYears() {
 
 /* Displays employee data */
 void EmployeeRecord::displayRecord() {
-	cout << "--------Employee-RECORD-" << endl;
+	cout << "--------EMPLOYEE-RECORD-" << endl;
 	cout << "ID: " << employeeID << endl;
 	cout << "Exp. Years: " << expYears << endl;
 	cout << "Unit: " << unitName << endl;
 	cout << "---------END-----------" << endl << endl;
 }
-

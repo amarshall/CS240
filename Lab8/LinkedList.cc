@@ -23,7 +23,7 @@ LinkedList<T>::LinkedList() {
 */
 template <class T>
 void LinkedList<T>::insertLastNode(T *recordIn) {
-	Node<T> * newNode = new Node<T>(recordIn, NULL, last);
+	Node<T>* newNode = new Node<T>(recordIn, NULL, last);
 	if(first != NULL) {
 		last->next = newNode;
 	} else {
@@ -36,7 +36,7 @@ void LinkedList<T>::insertLastNode(T *recordIn) {
 template <class T>
 void LinkedList<T>::removeFirstNode() {
 	if(first != NULL) {
-		Node<T> * tmp = first;
+		Node<T>* tmp = first;
 		first = first->next;
 		delete tmp;
 		if(first != NULL && first->next == NULL) {
@@ -51,7 +51,7 @@ void LinkedList<T>::removeFirstNode() {
 template <class T>
 void LinkedList<T>::removeSecondNode() {
 	if(first != NULL && first->next != NULL) {
-		Node<T> * tmp = first->next->next;  // Third node
+		Node<T>* tmp = first->next->next;  // Third node
 		delete first->next;  // Delete second node
 		first->next = tmp;
 		if(first->next != NULL) {
@@ -66,9 +66,9 @@ void LinkedList<T>::removeSecondNode() {
 template <class T>
 void LinkedList<T>::displayList() {
 	cout << "------BEGIN DISPLAY-----" << endl;
-	if (first == NULL) {
+	if(first == NULL) {
 		cout << "------Empty List!------" << endl;
-	} else {	
+	} else {
 		Node<T>* ptr = first;
 		while (ptr != NULL) {
 			ptr->data->displayRecord();
@@ -82,9 +82,9 @@ void LinkedList<T>::displayList() {
 template <class T>
 LinkedList<T>::~LinkedList() {
 	if(first != NULL) {
-		Node<T> * tmp = first;
+		Node<T>* tmp = first;
 		while(tmp != NULL) {
-			Node<T> * next = tmp->next;
+			Node<T>* next = tmp->next;
 			delete tmp;
 			tmp = next;
 		}
