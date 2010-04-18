@@ -55,7 +55,7 @@ bool BinarySearchTree::searchHelper(TreeNode *node, int elem) const {
 	} else if(cur < elem) {
 		return searchHelper(node->getGreater(), elem);
 	} else {
-		return cur;
+		return true;
 	}
 }
 
