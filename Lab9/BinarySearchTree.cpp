@@ -29,7 +29,12 @@ bool BinarySearchTree::search(int elem) const {
  * @return If the insertion was successful.
  */
 bool BinarySearchTree::insert(int elem) {
-	return insertHelper(root, elem);
+	if(root == NULL) {
+		root = new TreeNode(elem);
+		return true;
+	} else {
+		return insertHelper(root, elem);
+	}
 }
 
 /**
@@ -75,7 +80,7 @@ bool BinarySearchTree::insertHelper(TreeNode *node, int elem) {
 		} else {
 			return insertHelper(node->getLesser(), elem);
 		}
-	} else if(node->getData() > elem) {
+	} else if(node->getData() < elem) {
 		if(node->getGreater() == NULL) {
 			node->setGreater(new TreeNode(elem));
 		} else {
