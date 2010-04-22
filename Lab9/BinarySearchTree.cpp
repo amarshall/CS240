@@ -52,12 +52,11 @@ void BinarySearchTree::traverseInOrder() {
  * @return True if the data was found, else false.
  */
 bool BinarySearchTree::searchHelper(TreeNode *node, int elem) const {
-	int cur = node->getData();
 	if(node == NULL) {
 		return false;
-	} else if(cur > elem) {
+	} else if(node->getData() > elem) {
 		return searchHelper(node->getLesser(), elem);
-	} else if(cur < elem) {
+	} else if(node->getData() < elem) {
 		return searchHelper(node->getGreater(), elem);
 	} else {
 		return true;
