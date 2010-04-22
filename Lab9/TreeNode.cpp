@@ -48,3 +48,9 @@ void TreeNode::setGreater(TreeNode *node) {
 		cerr << "Cannot set child node if it already exists!" << endl;
 	}
 }
+
+/* Destructor */
+TreeNode::~TreeNode() {
+	delete lesserNode;
+	delete greaterNode;
+}

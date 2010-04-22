@@ -102,3 +102,8 @@ void BinarySearchTree::traversalHelper(TreeNode *node) {
 		traversalHelper(node->getGreater());
 	}
 }
+
+/* Destructor */
+BinarySearchTree::~BinarySearchTree() {
+	delete root;
+}

@@ -16,6 +16,7 @@ class TreeNode {
 	public:
 		TreeNode();
 		TreeNode(int d);
+		~TreeNode();
 		TreeNode* getLesser();
 		TreeNode* getGreater();
 		int getData();

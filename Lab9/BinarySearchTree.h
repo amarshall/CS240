@@ -16,6 +16,7 @@ class BinarySearchTree {
 	
 	public:
 		BinarySearchTree();
+		~BinarySearchTree();
 		bool search(int elem) const;
 		bool insert(int elem);
 		void traverseInOrder();
