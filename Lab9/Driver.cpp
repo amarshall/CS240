@@ -19,166 +19,64 @@
 using namespace std;
 
 int main(){
-	
 	SearchClass search1;
 
 	ofstream fout;
 	string outputFile ="SearchPerformances.txt";
 	fout.open(outputFile.data());
 	assert(fout.is_open());
-//Array of size 10
-	int* sizeArray = search1.createInputArray(10, time(NULL));
-	fout << "Array of size 10" << endl;
-
 	timeval start;
 	timeval finish;
-	gettimeofday(&start, NULL);
-
-	for(int i=0;i<100;i++){	
-	search1.linearSearch(sizeArray[9]);
+	double totalTime;
+	int arraySizes[4] = {10, 1000, 10000, 100000};
+	for(int i = 0; i < 4; i++) {
+		int* sizeArray = search1.createInputArray(arraySizes[i], time(NULL));
+		fout << "Array of size " << arraySizes[i] << endl;
+		
+		// Linear search
+		gettimeofday(&start, NULL);
+		for(int j = 0; j<100; j++) {
+			search1.linearSearch(sizeArray[arraySizes[i]-1]);
+		}
+		gettimeofday(&finish, NULL);
+		totalTime = (double)((double)(finish.tv_sec - start.tv_sec) * 1000000 +
+			(double)(finish.tv_usec - start.tv_usec)) / (double)1000000;
+		fout << "Linear Search: " << totalTime << endl;
+		
+		// Interative binary search
+		gettimeofday(&start, NULL);
+		for(int j=0; j<100; j++) {
+			search1.itBinarySearch(sizeArray[arraySizes[i]-1]);
+		}
+		gettimeofday(&finish, NULL);
+		totalTime = (double)((double)(finish.tv_sec - start.tv_sec) * 1000000 +
+			(double)(finish.tv_usec - start.tv_usec)) / (double)1000000;
+		fout << "Iterative Binary Search: " << totalTime << endl;
+		
+		// Recursive binary search
+		gettimeofday(&start, NULL);
+		for(int j=0; j<100; j++) {
+			search1.recBinarySearch(sizeArray[arraySizes[i]-1]);
+		}
+		gettimeofday(&finish, NULL);
+		totalTime = (double)((double)(finish.tv_sec - start.tv_sec) * 1000000 +
+			(double)(finish.tv_usec - start.tv_usec)) / (double)1000000;
+		fout << "Recursive Binary Search: " << totalTime << endl;
+		
+		// Binary search tree
+		BinarySearchTree* bst = new BinarySearchTree();
+		for(int j = 0; j < arraySizes[i]; j++) {
+			bst->insert(sizeArray[i]);
+		}
+		gettimeofday(&start, NULL);
+		for(int j = 0; j < 100; j++) {
+			bst->search(sizeArray[arraySizes[i]-1]);
+		}
+		gettimeofday(&finish, NULL);
+		totalTime = (double)((double)(finish.tv_sec - start.tv_sec) * 1000000 +
+			(double)(finish.tv_usec - start.tv_usec)) / (double)1000000;
+		fout << "Binary Search Tree: " << totalTime << endl << endl;
 	}
-	gettimeofday(&finish, NULL);
-	double totalTime = 
-	(double)((double)(finish.tv_sec - start.tv_sec) * 1000000 + 
-	 (double)(finish.tv_usec - start.tv_usec)) / 
-	(double)1000000;
-	fout << "Linear Search: "<< totalTime<<endl;
-
-
-	gettimeofday(&start, NULL);
-	for(int i=0;i<100;i++){	
-	search1.itBinarySearch(sizeArray[9]);
-	}
-	gettimeofday(&finish, NULL);
-	totalTime = 
-	(double)((double)(finish.tv_sec - start.tv_sec) * 1000000 + 
-	 (double)(finish.tv_usec - start.tv_usec)) / 
-	(double)1000000;
-	fout << "Iterative Binary Search: "<< totalTime<<endl;
-
-	gettimeofday(&start, NULL);
-	for(int i=0;i<100;i++){	
-	search1.recBinarySearch(sizeArray[9]);
-	}
-	gettimeofday(&finish, NULL);
-	totalTime = 
-	(double)((double)(finish.tv_sec - start.tv_sec) * 1000000 + 
-	 (double)(finish.tv_usec - start.tv_usec)) / 
-	(double)1000000;
-	fout << "Recursive Binary Search: "<< totalTime<<endl;
-
-//Array of size 1000
-	sizeArray = search1.createInputArray(1000, time(NULL));
-	fout << "\nArray of size 1000"<<endl;
-
-	gettimeofday(&start, NULL);
-	for(int i=0;i<100;i++){	
-	search1.linearSearch(sizeArray[999]);
-	}
-	gettimeofday(&finish, NULL);
-	totalTime = 
-	(double)((double)(finish.tv_sec - start.tv_sec) * 1000000 + 
-	 (double)(finish.tv_usec - start.tv_usec)) / 
-	(double)1000000;
-	fout << "Linear Search: "<< totalTime<<endl;
-
-	gettimeofday(&start, NULL);
-	for(int i=0;i<100;i++){	
-	search1.itBinarySearch(sizeArray[999]);
-	}
-	gettimeofday(&finish, NULL);
-	totalTime = 
-	(double)((double)(finish.tv_sec - start.tv_sec) * 1000000 + 
-	 (double)(finish.tv_usec - start.tv_usec)) / 
-	(double)1000000;
-	fout << "Iterative Binary Search: "<< totalTime<<endl;
-
-	gettimeofday(&start, NULL);
-	for(int i=0;i<100;i++){	
-	search1.recBinarySearch(sizeArray[999]);
-	}
-	gettimeofday(&finish, NULL);
-	totalTime = 
-	(double)((double)(finish.tv_sec - start.tv_sec) * 1000000 + 
-	 (double)(finish.tv_usec - start.tv_usec)) / 
-	(double)1000000;
-	fout << "Recursive Binary Search: "<< totalTime<<endl;
-
-//Array of size 10000
-	sizeArray = search1.createInputArray(10000, time(NULL));
-	fout <<"\nArray of size 10000"<<endl;	
-
-	gettimeofday(&start, NULL);
-	for(int i=0;i<100;i++){	
-	search1.linearSearch(sizeArray[9999]);
-	}
-	gettimeofday(&finish, NULL);
-	totalTime = 
-	(double)((double)(finish.tv_sec - start.tv_sec) * 1000000 + 
-	 (double)(finish.tv_usec - start.tv_usec)) / 
-	(double)1000000;
-	fout << "Linear Search: "<< totalTime<<endl;
-
-	gettimeofday(&start, NULL);
-	for(int i=0;i<100;i++){	
-	search1.itBinarySearch(sizeArray[9999]);
-	}
-	gettimeofday(&finish, NULL);
-	totalTime = 
-	(double)((double)(finish.tv_sec - start.tv_sec) * 1000000 + 
-	 (double)(finish.tv_usec - start.tv_usec)) / 
-	(double)1000000;
-	fout << "Iterative Binary Search: "<< totalTime<<endl;
-
-	gettimeofday(&start, NULL);
-	for(int i=0;i<100;i++){	
-	search1.recBinarySearch(sizeArray[9999]);
-	}
-	gettimeofday(&finish, NULL);
-	totalTime = 
-	(double)((double)(finish.tv_sec - start.tv_sec) * 1000000 + 
-	 (double)(finish.tv_usec - start.tv_usec)) / 
-	(double)1000000;
-	fout << "Recursive Binary Search: "<< totalTime<<endl;
-
-//Array of size 100000
-	sizeArray = search1.createInputArray(100000, time(NULL));
-	fout<<"\nArray of size 100000"<<endl;
-
-	gettimeofday(&start, NULL);
-	for(int i=0;i<100;i++){	
-	search1.linearSearch(sizeArray[99999]);
-	}
-	gettimeofday(&finish, NULL);
-	totalTime = 
-	(double)((double)(finish.tv_sec - start.tv_sec) * 1000000 + 
-	 (double)(finish.tv_usec - start.tv_usec)) / 
-	(double)1000000;
-	fout << "Linear Search: "<< totalTime<<endl;
-
-	gettimeofday(&start, NULL);
-	for(int i=0;i<100;i++){	
-	search1.itBinarySearch(sizeArray[99999]);
-	}
-	gettimeofday(&finish, NULL);
-	totalTime = 
-	(double)((double)(finish.tv_sec - start.tv_sec) * 1000000 + 
-	 (double)(finish.tv_usec - start.tv_usec)) / 
-	(double)1000000;
-	fout << "Iterative Binary Search: "<< totalTime<<endl;
-
-	gettimeofday(&start, NULL);
-	for(int i=0;i<100;i++){	
-	search1.recBinarySearch(sizeArray[99999]);
-	}
-	gettimeofday(&finish, NULL);
-	totalTime = 
-	(double)((double)(finish.tv_sec - start.tv_sec) * 1000000 + 
-	 (double)(finish.tv_usec - start.tv_usec)) / 
-	(double)1000000;
-	fout << "Recursive Binary Search: "<< totalTime<<endl;
-
-	fout.close();
-
 	
+	fout.close();
 }
