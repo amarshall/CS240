@@ -76,6 +76,8 @@ int main(){
 		totalTime = (double)((double)(finish.tv_sec - start.tv_sec) * 1000000 +
 			(double)(finish.tv_usec - start.tv_usec)) / (double)1000000;
 		fout << "Binary Search Tree: " << totalTime << endl << endl;
+		
+		delete bst;
 	}
 	
 	fout.close();

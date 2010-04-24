@@ -12,6 +12,8 @@ using namespace std;
 /* Default constructor */
 BinarySearchTree::BinarySearchTree() {
 	root = NULL;
+	string filename = "errorLogFile.txt";
+	errorLog.open(filename.data());
 }
 
 /**
@@ -72,6 +74,7 @@ bool BinarySearchTree::searchHelper(TreeNode *node, int elem) const {
  */
 bool BinarySearchTree::insertHelper(TreeNode *node, int elem) {
 	if(node->getData() == elem) {
+		errorLog << "Cannot insert duplicate value: " << elem << endl;
 		return false;
 	} else if(node->getData() > elem) {
 		if(node->getLesser() == NULL) {
@@ -104,5 +107,6 @@ void BinarySearchTree::traversalHelper(TreeNode *node) {
 
 /* Destructor */
 BinarySearchTree::~BinarySearchTree() {
+	errorLog.close();
 	delete root;
 }

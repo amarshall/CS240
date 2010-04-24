@@ -6,10 +6,12 @@
  */
 
 #include "TreeNode.h"
+#include <fstream>
 
 class BinarySearchTree {
 	private: 
 		TreeNode* root;
+		std::ofstream errorLog;
 		bool insertHelper(TreeNode *node, int elem);
 		bool searchHelper(TreeNode *node, int elem) const;
 		void traversalHelper(TreeNode *node);
