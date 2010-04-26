@@ -18,6 +18,7 @@ class SearchClass{
 		
 	public:
 		SearchClass();
+		~SearchClass();
 		int* createInputArray(int size, int seed);
 		int linearSearch(int searchItem);
 		int itBinarySearch(int searchItem);

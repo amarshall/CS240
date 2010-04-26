@@ -19,7 +19,6 @@
 using namespace std;
 
 int main(){
-	SearchClass search1;
 
 	ofstream fout;
 	string outputFile ="SearchPerformances.txt";
@@ -30,13 +29,14 @@ int main(){
 	double totalTime;
 	int arraySizes[4] = {10, 1000, 10000, 100000};
 	for(int i = 0; i < 4; i++) {
-		int* sizeArray = search1.createInputArray(arraySizes[i], time(NULL));
+		SearchClass* search1 = new SearchClass();
+		int* sizeArray = search1->createInputArray(arraySizes[i], time(NULL));
 		fout << "Array of size " << arraySizes[i] << endl;
 		
 		// Linear search
 		gettimeofday(&start, NULL);
 		for(int j = 0; j<100; j++) {
-			search1.linearSearch(sizeArray[arraySizes[i]-1]);
+			search1->linearSearch(sizeArray[arraySizes[i]-1]);
 		}
 		gettimeofday(&finish, NULL);
 		totalTime = (double)((double)(finish.tv_sec - start.tv_sec) * 1000000 +
@@ -46,7 +46,7 @@ int main(){
 		// Interative binary search
 		gettimeofday(&start, NULL);
 		for(int j=0; j<100; j++) {
-			search1.itBinarySearch(sizeArray[arraySizes[i]-1]);
+			search1->itBinarySearch(sizeArray[arraySizes[i]-1]);
 		}
 		gettimeofday(&finish, NULL);
 		totalTime = (double)((double)(finish.tv_sec - start.tv_sec) * 1000000 +
@@ -56,7 +56,7 @@ int main(){
 		// Recursive binary search
 		gettimeofday(&start, NULL);
 		for(int j=0; j<100; j++) {
-			search1.recBinarySearch(sizeArray[arraySizes[i]-1]);
+			search1->recBinarySearch(sizeArray[arraySizes[i]-1]);
 		}
 		gettimeofday(&finish, NULL);
 		totalTime = (double)((double)(finish.tv_sec - start.tv_sec) * 1000000 +
@@ -77,6 +77,7 @@ int main(){
 			(double)(finish.tv_usec - start.tv_usec)) / (double)1000000;
 		fout << "Binary Search Tree: " << totalTime << endl << endl;
 		
+		delete search1;
 		delete bst;
 	}
 	

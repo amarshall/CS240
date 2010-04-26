@@ -101,3 +101,8 @@ int SearchClass::binaryRecursion(int first, int last, int searchItem){
 		}
 	}
 }
+
+/* Destructor */
+SearchClass::~SearchClass() {
+	delete[] intArray;
+}
