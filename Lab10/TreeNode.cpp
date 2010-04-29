@@ -1,8 +1,9 @@
 /**
- * CS240 Lab 9
+ * CS240 Lab 10
  * TreeNode.cpp
  * @author J. Andrew Marshall (jmarsha6)
- * @author Ahmet Iscen (aiscen1)
+ * @author Aaron Shipper (ashippe1)
+ * @author Kenneth Louie (klouie1)
  */
 
 #include "TreeNode.h"
@@ -10,13 +11,15 @@
 using namespace std;
 
 TreeNode::TreeNode() {
-	data = NULL;
+	word = NULL;
+	frequency = 0;
 	lesserNode = NULL;
 	greaterNode = NULL;
 }
 
-TreeNode::TreeNode(int d) {
-	data = d;
+TreeNode::TreeNode(string q) {
+	word = w;
+	frequency = 1;
 	lesserNode = NULL;
 	greaterNode = NULL;
 }
@@ -29,8 +32,16 @@ TreeNode* TreeNode::getGreater() {
 	return greaterNode;
 }
 
-int TreeNode::getData() {
-	return data;
+int TreeNode::getWord() {
+	return word;
+}
+
+int TreeNode::getFrequency() {
+	return frequency;
+}
+
+void increaseFrequency() {
+	frequency++;
 }
 
 void TreeNode::setLesser(TreeNode *node) {

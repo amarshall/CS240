@@ -1,8 +1,9 @@
 /**
- * CS240 Lab 9
+ * CS240 Lab 10
  * BinarySearchNode.cpp
  * @author J. Andrew Marshall (jmarsha6)
- * @author Ahmet Iscen (aiscen1)
+ * @author Aaron Shipper (ashippe1)
+ * @author Kenneth Louie (klouie1)
  */
 
 #include "BinarySearchTree.h"
@@ -21,7 +22,7 @@ BinarySearchTree::BinarySearchTree() {
  * @param elem The data to search for.
  * @return True if the data was found in the tree, else false.
  */
-bool BinarySearchTree::search(int elem) const {
+bool BinarySearchTree::search(string elem) const {
 	return searchHelper(root, elem);
 }
 
@@ -30,7 +31,7 @@ bool BinarySearchTree::search(int elem) const {
  * @param elem The data to insert.
  * @return If the insertion was successful.
  */
-bool BinarySearchTree::insert(int elem) {
+bool BinarySearchTree::insert(string elem) {
 	if(root == NULL) {
 		root = new TreeNode(elem);
 		return true;
@@ -53,12 +54,12 @@ void BinarySearchTree::traverseInOrder() {
  * @param elem The data to search for.
  * @return True if the data was found, else false.
  */
-bool BinarySearchTree::searchHelper(TreeNode *node, int elem) const {
+bool BinarySearchTree::searchHelper(TreeNode *node, string elem) const {
 	if(node == NULL) {
 		return false;
-	} else if(node->getData() > elem) {
+	} else if(node->getWord() > elem) {
 		return searchHelper(node->getLesser(), elem);
-	} else if(node->getData() < elem) {
+	} else if(node->getWord() < elem) {
 		return searchHelper(node->getGreater(), elem);
 	} else {
 		return true;
@@ -72,17 +73,17 @@ bool BinarySearchTree::searchHelper(TreeNode *node, int elem) const {
  * @param elem The new data to insert.
  * @return False if the new element could not be inserted.
  */
-bool BinarySearchTree::insertHelper(TreeNode *node, int elem) {
-	if(node->getData() == elem) {
+bool BinarySearchTree::insertHelper(TreeNode *node, string elem) {
+	if(node->getWord() == elem) {
 		errorLog << "Cannot insert duplicate value: " << elem << endl;
 		return false;
-	} else if(node->getData() > elem) {
+	} else if(node->getWord() > elem) {
 		if(node->getLesser() == NULL) {
 			node->setLesser(new TreeNode(elem));
 		} else {
 			return insertHelper(node->getLesser(), elem);
 		}
-	} else if(node->getData() < elem) {
+	} else if(node->getWord() < elem) {
 		if(node->getGreater() == NULL) {
 			node->setGreater(new TreeNode(elem));
 		} else {
@@ -100,7 +101,7 @@ bool BinarySearchTree::insertHelper(TreeNode *node, int elem) {
 void BinarySearchTree::traversalHelper(TreeNode *node) {
 	if(node != NULL) {
 		traversalHelper(node->getLesser());
-		cout << node->getData() << endl;
+		cout << node->getWord() << endl;
 		traversalHelper(node->getGreater());
 	}
 }
