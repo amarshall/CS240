@@ -22,7 +22,7 @@ BinarySearchTree::BinarySearchTree() {
  * @param elem The data to search for.
  * @return True if the data was found in the tree, else false.
  */
-bool BinarySearchTree::search(string elem) const {
+TreeNode* BinarySearchTree::search(string elem) const {
 	return searchHelper(root, elem);
 }
 
@@ -54,15 +54,15 @@ void BinarySearchTree::traverseInOrder() {
  * @param elem The data to search for.
  * @return True if the data was found, else false.
  */
-bool BinarySearchTree::searchHelper(TreeNode *node, string elem) const {
+TreeNode* BinarySearchTree::searchHelper(TreeNode *node, string elem) const {
 	if(node == NULL) {
-		return false;
-	} else if(node->getWord() > elem) {
+		return NULL;
+	} else if(elem.compare(node->getWord()) < 0) {
 		return searchHelper(node->getLesser(), elem);
-	} else if(node->getWord() < elem) {
+	} else if(elem.compare(node->getWord()) > 0) {
 		return searchHelper(node->getGreater(), elem);
 	} else {
-		return true;
+		return node;
 	}
 }
 
@@ -76,14 +76,15 @@ bool BinarySearchTree::searchHelper(TreeNode *node, string elem) const {
 bool BinarySearchTree::insertHelper(TreeNode *node, string elem) {
 	if(node->getWord() == elem) {
 		errorLog << "Cannot insert duplicate value: " << elem << endl;
+		node->increaseFrequency();
 		return false;
-	} else if(node->getWord() > elem) {
+	} else if(elem.compare(node->getWord()) < 0) {
 		if(node->getLesser() == NULL) {
 			node->setLesser(new TreeNode(elem));
 		} else {
 			return insertHelper(node->getLesser(), elem);
 		}
-	} else if(node->getWord() < elem) {
+	} else if(elem.compare(node->getWord()) > 0) {
 		if(node->getGreater() == NULL) {
 			node->setGreater(new TreeNode(elem));
 		} else {
@@ -105,6 +106,16 @@ void BinarySearchTree::traversalHelper(TreeNode *node) {
 		traversalHelper(node->getGreater());
 	}
 }
+
+void BinarySearchTree::printWordFrequency(string findString) {
+	TreeNode* cur = search(findString);
+	if(cur != NULL) {
+		cout << "The frequency of \"" << findString << "\" is: " << cur->getFrequency() << endl;
+	} else {
+		cout << "Specified word \"" << findString << "\" not found" << endl;
+	}
+}
+
 
 /* Destructor */
 BinarySearchTree::~BinarySearchTree() {

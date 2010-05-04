@@ -10,14 +10,7 @@
 
 using namespace std;
 
-TreeNode::TreeNode() {
-	word = NULL;
-	frequency = 0;
-	lesserNode = NULL;
-	greaterNode = NULL;
-}
-
-TreeNode::TreeNode(string q) {
+TreeNode::TreeNode(string w) {
 	word = w;
 	frequency = 1;
 	lesserNode = NULL;
@@ -32,7 +25,7 @@ TreeNode* TreeNode::getGreater() {
 	return greaterNode;
 }
 
-int TreeNode::getWord() {
+string TreeNode::getWord() {
 	return word;
 }
 
@@ -40,7 +33,7 @@ int TreeNode::getFrequency() {
 	return frequency;
 }
 
-void increaseFrequency() {
+void TreeNode::increaseFrequency() {
 	frequency++;
 }
 

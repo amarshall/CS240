@@ -17,12 +17,11 @@ class TreeNode {
 		TreeNode* greaterNode;
 		
 	public:
-		TreeNode();
 		TreeNode(std::string w);
 		~TreeNode();
 		TreeNode* getLesser();
 		TreeNode* getGreater();
-		int getWord();
+		std::string getWord();
 		int getFrequency();
 		void increaseFrequency();
 		void setLesser(TreeNode *node);

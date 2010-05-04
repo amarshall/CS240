@@ -15,13 +15,14 @@ class BinarySearchTree {
 		TreeNode* root;
 		std::ofstream errorLog;
 		bool insertHelper(TreeNode *node, std::string elem);
-		bool searchHelper(TreeNode *node, std::string elem) const;
+		TreeNode* searchHelper(TreeNode *node, std::string elem) const;
 		void traversalHelper(TreeNode *node);
+		void printWordFrequency(std::string findString);
 	
 	public:
 		BinarySearchTree();
 		~BinarySearchTree();
-		bool search(std::string elem) const;
+		TreeNode* search(std::string elem) const;
 		bool insert(std::string elem);
 		void traverseInOrder();
 };
