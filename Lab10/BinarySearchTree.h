@@ -17,7 +17,6 @@ class BinarySearchTree {
 		bool insertHelper(TreeNode *node, std::string elem);
 		TreeNode* searchHelper(TreeNode *node, std::string elem) const;
 		void traversalHelper(TreeNode *node);
-		void printWordFrequency(std::string findString);
 	
 	public:
 		BinarySearchTree();
@@ -25,4 +24,8 @@ class BinarySearchTree {
 		TreeNode* search(std::string elem) const;
 		bool insert(std::string elem);
 		void traverseInOrder();
+		void printWordFrequency(std::string word);
+		void uniqueWordCount();
+		void totalCharCount();
+		std::string stripPunctuation(std::string filename);
 };
