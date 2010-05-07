@@ -42,6 +42,15 @@ int main(int argc, char *argv[]) {
 			}
 		} while (iss);
 	}
+	bst->printFrequency();
+	bst->uniqueWordCount();
+	bst->totalCharCount();
+	string input;
+	do {
+		cout << "Enter word to search for or type \"ExitSpring10\" to finish: ";
+		cin >> input;
+		bst->printWordFrequency(input);
+	} while (input !="ExitSpring10");
 
 	in.close();
 	return 0;
