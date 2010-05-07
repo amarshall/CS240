@@ -158,10 +158,10 @@ string BinarySearchTree::stripPunctuation(string word) {
 		word.erase(word.find("?"), 1);
 	}
 	while(word.find("'") != string::npos) {
-		word.erase(word.find("?"), 1);
+		word.erase(word.find("'"), 1);
 	}
 	while(word.find("\"") != string::npos) {
-		word.erase(word.find("?"), 1);
+		word.erase(word.find("\""), 1);
 	}
 	return word;
 }
