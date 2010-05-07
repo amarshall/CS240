@@ -144,6 +144,12 @@ string BinarySearchTree::stripPunctuation(string word) {
 	while(word.find("?") != string::npos) {
 		word.erase(word.find("?"), 1);
 	}
+	while(word.find("'") != string::npos) {
+		word.erase(word.find("?"), 1);
+	}
+	while(word.find("\"") != string::npos) {
+		word.erase(word.find("?"), 1);
+	}
 	return word;
 }
 
