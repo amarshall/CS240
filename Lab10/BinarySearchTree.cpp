@@ -79,21 +79,16 @@ TreeNode* BinarySearchTree::searchHelper(TreeNode *node, string elem) const {
 bool BinarySearchTree::insertHelper(TreeNode *node, string elem) {
 	if(node->getWord() == elem) {
 		node->increaseFrequency();
-		charCount += elem.length();
 		return false;
 	} else if(elem.compare(node->getWord()) < 0) {
 		if(node->getLesser() == NULL) {
 			node->setLesser(new TreeNode(elem));
-			charCount += elem.length();
-			wordCount++;
 		} else {
 			return insertHelper(node->getLesser(), elem);
 		}
 	} else if(elem.compare(node->getWord()) > 0) {
 		if(node->getGreater() == NULL) {
 			node->setGreater(new TreeNode(elem));
-			charCount += elem.length();
-			wordCount++;
 		} else {
 			return insertHelper(node->getGreater(), elem);
 		}
