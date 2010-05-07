@@ -6,13 +6,13 @@
  * @author Kenneth Louie (klouie1)
  */
 
-
 #include <stdlib.h>
 #include <string>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include "BinarySearchTree.h"
+
 using namespace std;
 
 int main(int argc, char *argv[]) {
@@ -24,13 +24,13 @@ int main(int argc, char *argv[]) {
 	string inputFile = (string(argv[1]));
 	in.open(inputFile.data());
 	if(!in.is_open()) {
-		cerr << "Error opening inputfile " << inputFile << endl;
+		cerr << "Error opening inputfile: " << inputFile << endl;
 		exit(1);
 	}
 
 	BinarySearchTree* bst = new BinarySearchTree();
 
-	while (!in.eof()) {
+	while(!in.eof()) {
 		string cur;
 		getline(in, cur);
 		istringstream iss(cur);
@@ -45,14 +45,15 @@ int main(int argc, char *argv[]) {
 	bst->printFrequency();
 	bst->uniqueWordCount();
 	bst->totalCharCount();
+
 	string input;
 	do {
 		cout << "Enter word to search for or type \"ExitSpring10\" to finish: ";
 		cin >> input;
 		bst->printWordFrequency(input);
-	} while (input !="ExitSpring10");
+	} while(input != "ExitSpring10");
 
+	delete bst;
 	in.close();
 	return 0;
 }
-
