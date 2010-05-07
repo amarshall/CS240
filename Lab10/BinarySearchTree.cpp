@@ -13,6 +13,8 @@ using namespace std;
 /* Default constructor */
 BinarySearchTree::BinarySearchTree() {
 	root = NULL;
+	charCount = 0;
+	wordCount = 0;
 	string filename = "errorLogFile.txt";
 	errorLog.open(filename.data());
 }
@@ -29,14 +31,15 @@ TreeNode* BinarySearchTree::search(string elem) const {
 /**
  * Searches for the given element into the tree.
  * @param elem The data to insert.
- * @return If the insertion was successful.
  */
-bool BinarySearchTree::insert(string elem) {
+void BinarySearchTree::insert(string elem) {
+	elem = stripPunctuation(elem);
+	charCount += elem.length();
 	if(root == NULL) {
 		root = new TreeNode(elem);
-		return true;
+		wordCount++;
 	} else {
-		return insertHelper(root, elem);
+		if(insertHelper(root, elem)) wordCount++;
 	}
 }
 
@@ -71,22 +74,26 @@ TreeNode* BinarySearchTree::searchHelper(TreeNode *node, string elem) const {
  * node in the tree.
  * @param node The node to begin the traversal at.
  * @param elem The new data to insert.
- * @return False if the new element could not be inserted.
+ * @return False if the word was not a new word and already existed in the tree.
  */
 bool BinarySearchTree::insertHelper(TreeNode *node, string elem) {
 	if(node->getWord() == elem) {
-		errorLog << "Cannot insert duplicate value: " << elem << endl;
 		node->increaseFrequency();
+		charCount += elem.length();
 		return false;
 	} else if(elem.compare(node->getWord()) < 0) {
 		if(node->getLesser() == NULL) {
 			node->setLesser(new TreeNode(elem));
+			charCount += elem.length();
+			wordCount++;
 		} else {
 			return insertHelper(node->getLesser(), elem);
 		}
 	} else if(elem.compare(node->getWord()) > 0) {
 		if(node->getGreater() == NULL) {
 			node->setGreater(new TreeNode(elem));
+			charCount += elem.length();
+			wordCount++;
 		} else {
 			return insertHelper(node->getGreater(), elem);
 		}
@@ -107,6 +114,10 @@ void BinarySearchTree::traversalHelper(TreeNode *node) {
 	}
 }
 
+/**
+ * Prints the number of times the given word occurred to stdout
+ * @param findString The word to print the frequency for.
+ */
 void BinarySearchTree::printWordFrequency(string findString) {
 	TreeNode* cur = search(findString);
 	if(cur != NULL) {
@@ -116,15 +127,22 @@ void BinarySearchTree::printWordFrequency(string findString) {
 	}
 }
 
+/* Prints the number of unique words to stdout */
 void BinarySearchTree::uniqueWordCount() {
-	// TODO
+	cout << "Number of unique words: " << wordCount << endl;
 }
 
+/* Prints the total number of characters to stdout */
 void BinarySearchTree::totalCharCount() {
-	// TODO
+	cout << "Total number of characters (sans whitespace & punctuation): " << charCount;
 }
 
-	
+/**
+ * Removes periods, commas, semicolons, colons, exclamation points, question
+ * marks, single primes, and double primes from the given string
+ * @param word The string to strip punctuation from.
+ * @return The string sans punctuation.
+ */
 string BinarySearchTree::stripPunctuation(string word) {
 	while(word.find(";") != string::npos) {
 		word.erase(word.find(";"), 1);
