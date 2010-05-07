@@ -9,23 +9,31 @@
 #include "TreeNode.h"
 #include <fstream>
 #include <string>
+#include <vector>
 
 class BinarySearchTree {
-	private: 
+	private:
+		struct word {
+			std::string elem;
+			int frequency;
+		};
 		TreeNode* root;
 		std::ofstream errorLog;
 		int charCount;
 		int wordCount;
 		bool insertHelper(TreeNode *node, std::string elem);
 		TreeNode* searchHelper(TreeNode *node, std::string elem) const;
-		void traversalHelper(TreeNode *node);
+		void traversalHelper(TreeNode *node, std::vector<word>& words);
+		class Cmp {
+			public:
+				bool operator()(word a, word b);
+		};
 	
 	public:
 		BinarySearchTree();
 		~BinarySearchTree();
 		TreeNode* search(std::string elem) const;
 		void insert(std::string elem);
-		void traverseInOrder();
 		void printFrequency();
 		void printWordFrequency(std::string word);
 		void uniqueWordCount();

@@ -7,6 +7,8 @@
  */
 
 #include "BinarySearchTree.h"
+#include <algorithm>
+#include <ctype.h>
 
 using namespace std;
 
@@ -15,8 +17,6 @@ BinarySearchTree::BinarySearchTree() {
 	root = NULL;
 	charCount = 0;
 	wordCount = 0;
-	string filename = "errorLogFile.txt";
-	errorLog.open(filename.data());
 }
 
 /**
@@ -29,10 +29,16 @@ TreeNode* BinarySearchTree::search(string elem) const {
 }
 
 /**
- * Searches for the given element into the tree.
+ * Inserts the given element into the tree. This automatically strips
+ * the given string of certain punctuation and converts all
+ * characters to lowercase.
+ * @see stripPunctuation()
  * @param elem The data to insert.
  */
 void BinarySearchTree::insert(string elem) {
+	for(unsigned int i = 0; i < elem.length(); ++i) {
+		elem[i] = tolower(elem[i]);
+	}
 	elem = stripPunctuation(elem);
 	charCount += elem.length();
 	if(root == NULL) {
@@ -41,13 +47,6 @@ void BinarySearchTree::insert(string elem) {
 	} else {
 		if(insertHelper(root, elem)) wordCount++;
 	}
-}
-
-/**
- * Traverses the entire tree, in order, and prints out all the data.
- */
-void BinarySearchTree::traverseInOrder() {
-	traversalHelper(root);
 }
 
 /**
@@ -101,11 +100,14 @@ bool BinarySearchTree::insertHelper(TreeNode *node, string elem) {
  * the data within.
  * @param node The node to begin the traversal at.
  */
-void BinarySearchTree::traversalHelper(TreeNode *node) {
+void BinarySearchTree::traversalHelper(TreeNode* node, vector<word>& words) {
 	if(node != NULL) {
-		traversalHelper(node->getLesser());
-		cout << node->getWord() << endl;
-		traversalHelper(node->getGreater());
+		traversalHelper(node->getLesser(), words);
+		word cur;
+		cur.elem = node->getWord();
+		cur.frequency = node->getFrequency();
+		words.push_back(cur);
+		traversalHelper(node->getGreater(), words);
 	}
 }
 
@@ -113,7 +115,12 @@ void BinarySearchTree::traversalHelper(TreeNode *node) {
  * Print all the words in increasing order of frequency to stdout
  */
 void BinarySearchTree::printFrequency() {
-	//TODO
+	vector<word> words;
+	traversalHelper(root, words);
+	sort(words.begin(), words.end(), Cmp());
+	for(vector<word>::iterator it = words.begin(); it != words.end(); ++it) {
+		cout << "\"" << it->elem << "\" occurs " << it->frequency << " times." << endl;
+	}
 }
 
 /**
@@ -136,12 +143,12 @@ void BinarySearchTree::uniqueWordCount() {
 
 /* Prints the total number of characters to stdout */
 void BinarySearchTree::totalCharCount() {
-	cout << "Total number of characters (sans whitespace & punctuation): " << charCount;
+	cout << "Total number of characters (sans whitespace & punctuation): " << charCount << endl;
 }
 
 /**
  * Removes periods, commas, semicolons, colons, exclamation points, question
- * marks, single primes, and double primes from the given string
+ * marks, and double primes from the given string
  * @param word The string to strip punctuation from.
  * @return The string sans punctuation.
  */
@@ -164,18 +171,23 @@ string BinarySearchTree::stripPunctuation(string word) {
 	while(word.find("?") != string::npos) {
 		word.erase(word.find("?"), 1);
 	}
-	while(word.find("'") != string::npos) {
-		word.erase(word.find("'"), 1);
-	}
 	while(word.find("\"") != string::npos) {
 		word.erase(word.find("\""), 1);
 	}
 	return word;
 }
 
+/**
+ * Compares the frequency of two words
+ * @param a The first word to compare
+ * @param b The second word to compare
+ * @return True if b has a higher frequency than a, else false
+ */
+bool BinarySearchTree::Cmp::operator()(word a, word b) {
+	return a.frequency < b.frequency;
+}
 
 /* Destructor */
 BinarySearchTree::~BinarySearchTree() {
-	errorLog.close();
 	delete root;
 }
