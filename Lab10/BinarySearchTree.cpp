@@ -110,6 +110,13 @@ void BinarySearchTree::traversalHelper(TreeNode *node) {
 }
 
 /**
+ * Print all the words in increasing order of frequency to stdout
+ */
+void BinarySearchTree::printFrequency() {
+	//TODO
+}
+
+/**
  * Prints the number of times the given word occurred to stdout
  * @param findString The word to print the frequency for.
  */

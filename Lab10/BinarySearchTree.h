@@ -26,6 +26,7 @@ class BinarySearchTree {
 		TreeNode* search(std::string elem) const;
 		void insert(std::string elem);
 		void traverseInOrder();
+		void printFrequency();
 		void printWordFrequency(std::string word);
 		void uniqueWordCount();
 		void totalCharCount();
