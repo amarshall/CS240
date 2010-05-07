@@ -117,7 +117,7 @@ void BinarySearchTree::traversalHelper(TreeNode* node, vector<word>& words) {
 void BinarySearchTree::printFrequency() {
 	vector<word> words;
 	traversalHelper(root, words);
-	sort(words.begin(), words.end(), Cmp());
+	sort(words.begin(), words.end(), WordCompare());
 	for(vector<word>::iterator it = words.begin(); it != words.end(); ++it) {
 		cout << "\"" << it->elem << "\" occurs " << it->frequency << " times." << endl;
 	}
@@ -183,7 +183,7 @@ string BinarySearchTree::stripPunctuation(string word) {
  * @param b The second word to compare
  * @return True if b has a higher frequency than a, else false
  */
-bool BinarySearchTree::Cmp::operator()(word a, word b) {
+bool BinarySearchTree::WordCompare::operator()(word a, word b) {
 	return a.frequency < b.frequency;
 }
 

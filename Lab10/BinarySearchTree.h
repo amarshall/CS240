@@ -24,7 +24,7 @@ class BinarySearchTree {
 		bool insertHelper(TreeNode *node, std::string elem);
 		TreeNode* searchHelper(TreeNode *node, std::string elem) const;
 		void traversalHelper(TreeNode *node, std::vector<word>& words);
-		class Cmp {
+		class WordCompare {
 			public:
 				bool operator()(word a, word b);
 		};
