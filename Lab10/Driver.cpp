@@ -22,15 +22,13 @@ int main(int argc, char *argv[]) {
 	}
 	ifstream in;
 	string inputFile = (string(argv[1]));
-
-//	BinarySearchTree* bst = new BinarySearchTree();
-
 	in.open(inputFile.data());
-
 	if(!in.is_open()) {
 		cerr << "Error opening inputfile " << inputFile << endl;
 		exit(1);
 	}
+
+	BinarySearchTree* bst = new BinarySearchTree();
 
 	while (!in.eof()) {
 		string cur;
@@ -39,9 +37,8 @@ int main(int argc, char *argv[]) {
 		do {
 			string sub;
 			iss >> sub;
-//FIXME: Fix the new line problem
-			if(sub != "\n") {
-				cout << "Substring: " << sub << endl;
+			if((int)sub[0] != 0) {
+				bst->insert(sub);
 			}
 		} while (iss);
 	}
