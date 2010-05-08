@@ -39,9 +39,12 @@ void LinkedList<T>::removeFirstNode() {
 		Node<T>* tmp = first;
 		first = first->next;
 		delete tmp;
-		if(first != NULL && first->next == NULL) {
-			last = first;
-		} else if(first == NULL) {
+		if(first != NULL) {
+			first->prev = NULL;
+			if(first->next == NULL) {
+				last = first;
+			}
+		} else {
 			last = NULL;
 		}
 	}
