@@ -99,6 +99,7 @@ bool BinarySearchTree::insertHelper(TreeNode *node, string elem) {
  * Private method to recursively traverse the tree, in order, and print out all
  * the data within.
  * @param node The node to begin the traversal at.
+ * @param words A vector to dump all the words in.
  */
 void BinarySearchTree::traversalHelper(TreeNode* node, vector<word>& words) {
 	if(node != NULL) {

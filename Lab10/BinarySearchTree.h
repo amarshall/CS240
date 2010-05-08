@@ -38,5 +38,5 @@ class BinarySearchTree {
 		void printWordFrequency(std::string word);
 		void uniqueWordCount();
 		void totalCharCount();
-		std::string stripPunctuation(std::string filename);
+		std::string stripPunctuation(std::string word);
 };
